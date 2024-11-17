@@ -22,7 +22,7 @@ export default async function Home() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <h2 className="text-3xl font-bold text-white mb-8 text-center">
         Suggestion listen to Quran
-        <SoundGrid sounds={data.data} />
+        <SoundGrid sounds={data} />
       </h2>
     </div>
   );

@@ -1,18 +1,26 @@
 "use client";
 
-import { getImageUrl } from "@/lib/tmdb";
+import { getImageUrl } from "@/lib/api";
 import { Link } from "next-view-transitions";
-import { Star } from "lucide-react";
+import { AudioLinesIcon } from "lucide-react";
+import { formatDuration } from "@/lib/utils";
 
-export function SoundCard({ sound }: { sound: any }) {
+interface Sound {
+  id: string;
+  title: string;
+  md5_image: string;
+  duration: number;
+}
+
+export function SoundCard({ sound }: Readonly<{ sound: Sound }>) {
   return (
     <Link
-      href={`/movie/${sound.id}`}
+      href={`/sound/${sound.id}`}
       className="group relative overflow-hidden rounded-lg bg-gray-800 transition-transform hover:scale-105"
     >
-      <div className="aspect-[2/3]">
+      <div className="aspect-[3/3]">
         <img
-          src={getImageUrl(sound.poster_path, "w500")}
+          src={getImageUrl(sound.md5_image)}
           alt={sound.title}
           className="h-full w-full object-cover transition-opacity"
           style={{ viewTransitionName: `poster-${sound.id}` }}
@@ -23,10 +31,9 @@ export function SoundCard({ sound }: { sound: any }) {
             {sound.title}
           </h3>
           <div className="flex items-center text-yellow-400 mb-2">
-            <Star className="w-4 h-4 mr-1" />
-            <span>{sound.vote_average.toFixed(1)}</span>
+            <AudioLinesIcon className="w-4 h-4 mr-1" />
+            {formatDuration(sound?.duration)}
           </div>
-          <p className="text-sm text-gray-300 line-clamp-3">{sound.overview}</p>
         </div>
       </div>
     </Link>
