@@ -9,8 +9,3 @@ export default async function SoundPage({
   const sound = await getSoundDetails(params.id);
   return <SoundDetails sound={sound} />;
 }
-
-//preview
-//duration
-//title
-//md5_image

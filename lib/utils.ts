@@ -8,8 +8,5 @@ export function cn(...inputs: ClassValue[]) {
 export const formatDuration = (duration: number) => {
   if (!duration) return "00:00";
 
-  return new Date(duration * 1000).toLocaleTimeString([], {
-    minute: "2-digit",
-    second: "2-digit",
-  });
+  return new Date(duration * 1000).toISOString().substring(14, 19);
 };

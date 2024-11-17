@@ -41,6 +41,10 @@ export function SoundDetails({ sound }: { sound: any }) {
                   <span>{formatDuration(sound.duration)}</span>
                 </div>
               </div>
+              {/* <audio controls>
+                <track kind="captions" />
+                <source src={sound?.preview} type="audio/mp3" />
+              </audio> */}
 
               <p className="text-gray-300 text-base md:text-lg leading-relaxed">
                 {sound?.title}
